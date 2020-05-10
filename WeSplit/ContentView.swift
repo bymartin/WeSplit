@@ -11,11 +11,11 @@ import SwiftUI
 struct ContentView: View {
     @State private var checkAmount = ""
     @State private var numberOfPeople = "2"
-    @State private var tipPercentage = 2
+    @State private var tipPercentage = 3
     
-    let tipPercentages = [10, 15, 20, 25, 0]
+    let tipPercentages = [10, 15, 18, 20, 25, 0]
     
-    var peopleCount: Double {
+    private var peopleCount: Double {
         if let numPeople = Double(numberOfPeople) {
             return numPeople
         } else {
@@ -23,19 +23,19 @@ struct ContentView: View {
         }
     }
     
-    var tipSelection: Double {
+    private var tipSelection: Double {
         return Double(tipPercentages[tipPercentage])
     }
     
-    var orderAmount: Double {
+    private var orderAmount: Double {
         return Double(checkAmount) ?? 0
     }
     
-    var tipValue: Double {
+    private var tipValue: Double {
         return orderAmount / 100 * tipSelection
     }
     
-    var grandTotal: Double {
+    private var grandTotal: Double {
         if orderAmount == 0 {
             return 0
         } else {
@@ -43,7 +43,7 @@ struct ContentView: View {
         }
     }
     
-    var totalPerPerson: Double {
+    private var totalPerPerson: Double {
         return grandTotal / peopleCount
     }
     
