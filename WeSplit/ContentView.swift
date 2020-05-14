@@ -80,6 +80,8 @@ struct ContentView: View {
                 }
                 Section(header: Text("Total Amount with tip")) {
                     Text("$\(grandTotal, specifier: "%.2f")")
+                        // show total in red if no tip
+                        .foregroundColor(tipValue > 0 ? .black : .red)
                 }
             }
             .navigationBarTitle("WeSplit")
